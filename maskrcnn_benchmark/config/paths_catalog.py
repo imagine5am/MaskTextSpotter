@@ -67,6 +67,22 @@ class DatasetCatalog(object):
             "scut-eng-char/train_images",
             "scut-eng-char/train_gts",
         ),
+        "indic-scene-text-2017_train":(
+            "/mnt/data/Rohit/VideoCapsNet/data/IndicSceneText2017/Devanagari/images",
+            "/mnt/data/Rohit/VideoCapsNet/data/IndicSceneText2017/Devanagari/annotations",
+        ),
+        "mlt-17_train":(
+            "MLT-2017/images/train",
+            "MLT-2017/annotations/train",
+        ),
+        "mlt-17_val":(
+            "MLT-2017/images/val",
+            "MLT-2017/annotations/val",
+        ),
+        "mlt-19_train":(
+            "MLT-2019/images/train",
+            "MLT-2019/annotations/train",
+        ),
 
     }
 
@@ -151,6 +167,39 @@ class DatasetCatalog(object):
             return dict(
                 args=args,
                 factory="ScutDataset",
+            )
+        elif "indic-scene-text-2017" in name:
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+                use_charann=False,
+                imgs_dir=attrs[0],
+                gts_dir=attrs[1],
+            )
+            return dict(
+                args=args,
+                factory="Indic17Dataset",
+            )
+        elif "mlt-17" in name:
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+                use_charann=False,
+                imgs_dir=attrs[0],
+                gts_dir=attrs[1],
+            )
+            return dict(
+                args=args,
+                factory="MLT17Dataset",
+            )
+        elif "mlt-19" in name:
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+                use_charann=False,
+                imgs_dir=attrs[0],
+                gts_dir=attrs[1],
+            )
+            return dict(
+                args=args,
+                factory="MLT19Dataset",
             )
         raise RuntimeError("Dataset not available: {}".format(name))
 
