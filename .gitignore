@@ -29,12 +29,3 @@ dist/
 /models
 /outputs
 /vis
-*.jpg
-*.JPG
-*.JPEG
-*.zip
-*.txt
-
-evaluation
-
-
