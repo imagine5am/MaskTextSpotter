@@ -5,7 +5,15 @@ conda activate masktextspotter
 export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64/:$LD_LIBRARY_PATH
 export PATH=/usr/local/cuda-10.0/bin/:$PATH
 
+conda install pytorch==1.2.0 torchvision cudatoolkit=10.0 -c pytorch
+
 python setup.py build develop > build_errors.txt
+
+import torch
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+from maskrcnn_benchmark import _C
+from ._utils import _C
+
 --------------------------------------------------------------------
 
 nvcc --version
