@@ -237,4 +237,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     main(args)
 
-    # python tools/demo.py --image_path ./demo_images/demo.jpg --visu_path ./demo_images/demo_results.jpg
+    # python tools/demo.py --image_path ./demo_images/demo1.jpg --visu_path ./demo_images/demo1_results.jpg
+    # python tools/demo.py --image_path ./demo_images/000.png --visu_path ./demo_images/000_results.png
