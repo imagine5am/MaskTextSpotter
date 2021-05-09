@@ -1,0 +1,32 @@
+class ScutDataset(object):
+    def __init__(self, use_charann, imgs_dir, gts_dir,transforms=None):
+        self.use_charann=use_charann
+        self.image_lists = [os.path.join(imgs_dir,img) for img in os.listdir(imgs_dir)]
+        self.gts_dir=gts_dir
+        self.transforms = transforms
+        self.min_proposal_size=2
+        self.char_classes = '_0123456789abcdefghijklmnopqrstuvwxyz'
+        self.vis=False
+        
+class SynthtextDataset(object):
+    def __init__(self, use_charann, list_file_path, imgs_dir, gts_dir, transforms=None):
+        self.use_charann=use_charann
+        list_file = open(list_file_path, 'r')
+        image_lines = list_file.readlines()
+        self.image_lists = [os.path.join(imgs_dir, line.strip()) for line in image_lines]
+        self.gt_lists=[os.path.join(gts_dir, line.strip()+'.txt') for line in image_lines]
+        self.filtered_gts = []
+        self.transforms = transforms
+        self.min_proposal_size=2
+        self.char_classes = '_0123456789abcdefghijklmnopqrstuvwxyz'
+        self.vis=False
+        
+class IcdarDataset(object):
+    def __init__(self, use_charann, imgs_dir, gts_dir,transforms=None):
+        self.use_charann=use_charann
+        self.image_lists = [os.path.join(imgs_dir,img) for img in os.listdir(imgs_dir)]
+        self.gts_dir=gts_dir
+        self.transforms = transforms
+        self.min_proposal_size=2
+        self.char_classes = '_0123456789abcdefghijklmnopqrstuvwxyz'
+        self.vis=False

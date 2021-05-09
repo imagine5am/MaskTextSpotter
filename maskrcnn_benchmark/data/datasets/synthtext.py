@@ -85,6 +85,9 @@ class SynthtextDataset(object):
 
     def load_gt_from_txt(self, gt_path, height=None, width=None):
         words, boxes, charsboxes, segmentations=[], [], [], []
+        # words is a "list of" "list of" char class index based on self.char_classes
+        # boxes is a list of [min_x, min_y, max_x, max_y] for each polygon i.e. rectangular coordinates
+        # segmentations is a list of polygon coordinates
         lines = open(gt_path).readlines()
         for line in lines:
             charbbs = []

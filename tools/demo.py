@@ -236,3 +236,5 @@ if __name__ == "__main__":
     parser.add_argument("--visu_path", type=str, default='./demo_images/demo_results.jpg')
     args = parser.parse_args()
     main(args)
+
+    # python tools/demo.py --image_path ./demo_images/demo.jpg --visu_path ./demo_images/demo_results.jpg
